@@ -1,0 +1,51 @@
+Index: microbit/mccc.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/microbit/mccc.py b/microbit/mccc.py
+--- a/microbit/mccc.py	
++++ b/microbit/mccc.py	(date 1656416485718)
+@@ -1,7 +1,7 @@
+ from microbit import *
+-    if button_a.is_pressed():
+-        display.show(Image.YES)
+-    elif button_b.is_pressed():
+-        display.show(Image.NO)
+-    else:
+-        display.show(Image.ASLEEP)
++if button_a.is_pressed():
++    display.show(Image.YES)
++elif button_b.is_pressed():
++    display.show(Image.NO)
++else:
++    display.show(Image.ASLEEP)
+Index: microbit/microbit - 副本.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/microbit/microbit - 副本.py b/microbit/microbit - 副本.py
+--- a/microbit/microbit - 副本.py	
++++ b/microbit/microbit - 副本.py	(date 1656312080550)
+@@ -1,6 +1,5 @@
+ from microbit import *
+ 
+-
+ # Imports go at the top
+ while True:
+     while True:
+@@ -8,5 +7,10 @@
+             for x in range(5):
+                 for y in range(5):
+                     for z in range(10):
+-                        display.set_pixel(x,y,z)
+-            break
+\ No newline at end of file
++                        display.set_pixel(x, y, z)
++            break  # break out of the inner loop
++        if button_b.get_presses():
++            display.scroll('never give you up', wait=False, loop=True)
++            if button_a.is_pressed():
++                break  # break out of the outer loop
++        display.clear()
